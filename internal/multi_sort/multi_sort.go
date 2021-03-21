@@ -6,7 +6,7 @@ import (
 	"sort"
 )
 
-type Child struct {
+type Student struct {
 	Name      string
 	Maths     int
 	Physics   int
@@ -18,10 +18,10 @@ type Child struct {
 //	ch1 < ch2  => -1
 //	ch1 == ch2 => 0
 //	ch1 > ch2  => 1
-type lessFunc func(ch1, ch2 Child) int
+type lessFunc func(ch1, ch2 Student) int
 
 type sorter struct {
-	class []Child
+	class []Student
 	less  []lessFunc
 }
 
@@ -61,12 +61,12 @@ func OrderedBy(ls ...lessFunc) *sorter {
 	}
 }
 
-func (s *sorter) Sort(c []Child) {
+func (s *sorter) Sort(c []Student) {
 	s.class = c
 	sort.Sort(s)
 }
 
-var maths = func(ch1, ch2 Child) int {
+var maths = func(ch1, ch2 Student) int {
 	switch {
 	case ch1.Maths < ch2.Maths:
 		return -1
@@ -76,7 +76,7 @@ var maths = func(ch1, ch2 Child) int {
 	return 0
 }
 
-var physics = func(ch1, ch2 Child) int {
+var physics = func(ch1, ch2 Student) int {
 	switch {
 	case ch1.Physics < ch2.Physics:
 		return -1
@@ -86,7 +86,7 @@ var physics = func(ch1, ch2 Child) int {
 	return 0
 }
 
-var english = func(ch1, ch2 Child) int {
+var english = func(ch1, ch2 Student) int {
 	switch {
 	case ch1.English < ch2.English:
 		return -1
@@ -96,7 +96,7 @@ var english = func(ch1, ch2 Child) int {
 	return 0
 }
 
-var chemistry = func(ch1, ch2 Child) int {
+var chemistry = func(ch1, ch2 Student) int {
 	switch {
 	case ch1.Chemistry < ch2.Chemistry:
 		return -1
@@ -106,7 +106,7 @@ var chemistry = func(ch1, ch2 Child) int {
 	return 0
 }
 
-var class = []Child{
+var class = []Student{
 	{
 		Name:      "Lucien",
 		Maths:     32,
@@ -151,7 +151,7 @@ var class = []Child{
 	},
 }
 
-func SortByAllSubjects(c []Child) {
+func SortByAllSubjects(c []Student) {
 	if c == nil {
 		c = class
 	}

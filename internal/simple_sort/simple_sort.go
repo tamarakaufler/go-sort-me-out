@@ -5,12 +5,12 @@ import (
 	"sort"
 )
 
-type Child struct {
+type Student struct {
 	Name string
 	Age  float32
 }
 
-type ByAge []Child
+type ByAge []Student
 
 // satisfy sort.Interface interface.
 func (b ByAge) Len() int {
@@ -23,7 +23,7 @@ func (b ByAge) Less(i, j int) bool {
 	return b[i].Age < b[j].Age
 }
 
-var class = []Child{
+var class = []Student{
 	{
 		Name: "Lucien",
 		Age:  17,
@@ -50,7 +50,7 @@ var class = []Child{
 	},
 }
 
-func SortClassByAge(c []Child) {
+func SortClassByAge(c []Student) {
 	if c == nil {
 		c = class
 	}
@@ -66,7 +66,7 @@ func SortClassByAge(c []Child) {
 	log.Printf("simple sort - after sorting SortClassByAge: %+v\n\n", c)
 }
 
-func SliceSortClassByAge(c []Child) {
+func SliceSortClassByAge(c []Student) {
 	if c == nil {
 		c = class
 	}

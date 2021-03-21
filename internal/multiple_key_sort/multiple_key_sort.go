@@ -5,7 +5,7 @@ import (
 	"sort"
 )
 
-type Child struct {
+type Student struct {
 	Name      string
 	Maths     int
 	Physics   int
@@ -13,7 +13,7 @@ type Child struct {
 	Chemistry int
 }
 
-var class = []Child{
+var class = []Student{
 	{
 		Name:      "Lucien",
 		Maths:     32,
@@ -59,13 +59,13 @@ var class = []Child{
 }
 
 // used for sorting by different properties.
-type By func(ch1, ch2 Child) bool
+type By func(ch1, ch2 Student) bool
 
 // classSorter encapsulates the slice to sort and the implementation
 // of the Less method for a particular field
 type classSorter struct {
-	class []Child
-	by    func(ch1, ch2 Child) bool
+	class []Student
+	by    func(ch1, ch2 Student) bool
 }
 
 // implementation of the sort.Interface
@@ -81,8 +81,8 @@ func (cs *classSorter) Less(i, j int) bool {
 	return cs.by(cs.class[i], cs.class[j])
 }
 
-// the by receiver is the sorting method for a particular Child property/field.
-func (by By) Sort(c []Child) {
+// the by receiver is the sorting method for a particular Student property/field.
+func (by By) Sort(c []Student) {
 	cs := &classSorter{
 		class: c,
 		by:    by,
@@ -94,20 +94,20 @@ func (by By) Sort(c []Child) {
 }
 
 // custom Less functions to sort by each property
-var maths = func(ch1, ch2 Child) bool {
+var maths = func(ch1, ch2 Student) bool {
 	return ch1.Maths < ch2.Maths
 }
-var physics = func(ch1, ch2 Child) bool {
+var physics = func(ch1, ch2 Student) bool {
 	return ch1.Physics < ch2.Physics
 }
-var english = func(ch1, ch2 Child) bool {
+var english = func(ch1, ch2 Student) bool {
 	return ch1.English < ch2.English
 }
-var chemistry = func(ch1, ch2 Child) bool {
+var chemistry = func(ch1, ch2 Student) bool {
 	return ch1.Chemistry < ch2.Chemistry
 }
 
-func SortClassByMathsResults(c []Child) {
+func SortClassByMathsResults(c []Student) {
 	if c == nil {
 		c = class
 	}
@@ -121,7 +121,7 @@ func SortClassByMathsResults(c []Child) {
 	log.Printf("multiple_key_sort - SortClassByMathsResults after %+v\n\n", c)
 }
 
-func SortClassByPhysicsResults(c []Child) {
+func SortClassByPhysicsResults(c []Student) {
 	if c == nil {
 		c = class
 	}
@@ -135,7 +135,7 @@ func SortClassByPhysicsResults(c []Child) {
 	log.Printf("multiple_key_sort - SortClassByPhysicsResults after %+v\n\n", c)
 }
 
-func SortClassByEnglishResults(c []Child) {
+func SortClassByEnglishResults(c []Student) {
 	if c == nil {
 		c = class
 	}
@@ -149,7 +149,7 @@ func SortClassByEnglishResults(c []Child) {
 	log.Printf("multiple_key_sort - SortClassByEnglishResults after %+v\n\n", c)
 }
 
-func SortClassByChemistryResults(c []Child) {
+func SortClassByChemistryResults(c []Student) {
 	if c == nil {
 		c = class
 	}

@@ -1,7 +1,7 @@
 # go-sort-me-out
 Go examples of different sorting strategies
 
-The examples revolve around a class of students. If that bothers you, please, avoid, so as not to suffer a psychological damage.
+The examples revolve around a class of students. If that bothers you, please, avoid, so as not to suffer psychological damage.
 
 # Sorting of concrete types - structs
 

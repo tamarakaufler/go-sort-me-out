@@ -110,10 +110,6 @@ sort.Sort(ByFirstName{c})
 sort.Sort(ByLastName{c})
 sort.Sort(ByAge{c})
 
-## Map Sort
-
-Sorting of a map by its values uses the same approach as the Simple Sort above. A new type NameAge with an underlying type of a list is introduced, which satisfies the _sort.Interface_ interface. The map is then used to create a NameAge variable.
-
 ## Multiple Key Sort
 
 We have a struct that contains several fields that would want to individually sort by. As an example, there is a Student with Name and test points in several subjects. We want to be able to sort a class of students by their performace in different subjects.
@@ -184,3 +180,7 @@ OrderedBy function sets up the sorter.less field and the sorter.Sort method sets
 
     // c ... []Student{....}
     OrderedBy(maths, physics, english, chemistry).Sort(c)
+
+# Sorting of maps by value
+
+Sorting of a map by its values uses the same approach as the Simple Sort above. A new type NameAge with an underlying type of a list is introduced, which satisfies the _sort.Interface_ interface. The map is then used to create a NameAge variable.

@@ -2,6 +2,7 @@ package map_sort
 
 import (
 	"fmt"
+	"log"
 	"sort"
 )
 
@@ -45,8 +46,10 @@ func SortClassMap(c map[string]float32) {
 	}
 
 	sort.Sort(cs)
+
+	log.Printf("map sort - SortClassMap after sorting\n")
 	for _, s := range cs {
 		fmt.Printf("%s\n", s.name)
-		fmt.Printf("\tage %f\n", s.age)
+		fmt.Printf("\tage %.2f\n", s.age)
 	}
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/tamarakaufler/go-sort-me-out/internal/embed_sort"
 	"github.com/tamarakaufler/go-sort-me-out/internal/map_sort"
 	"github.com/tamarakaufler/go-sort-me-out/internal/multi_sort"
 	"github.com/tamarakaufler/go-sort-me-out/internal/multiple_key_sort"
@@ -11,6 +12,8 @@ func main() {
 	simple_sort.SortClassByAge(nil)
 	simple_sort.SliceSortClassByAge(nil)
 
+	map_sort.SortClassMap(nil)
+
 	multiple_key_sort.SortClassByMathsResults(nil)
 	multiple_key_sort.SortClassByPhysicsResults(nil)
 	multiple_key_sort.SortClassByEnglishResults(nil)
@@ -18,5 +21,7 @@ func main() {
 
 	multi_sort.SortByAllSubjects(nil)
 
-	map_sort.SortClassMap(nil)
+	embed_sort.SortByFirstName(nil)
+	embed_sort.SortByLastName(nil)
+	embed_sort.SortByAge(nil)
 }

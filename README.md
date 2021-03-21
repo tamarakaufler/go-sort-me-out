@@ -54,6 +54,63 @@ a) sorting by name
 		return c[i].Name < c[j].Name
     }
 
+## Embed Sort
+
+Another approach to allow sorting by different struct fields is to take advantage type embedding. These fields have the field name specified implicitly.
+(Embedded/anonymous field is specified as a type name or a pointer to a non-interface type name.)
+
+    type Student struct {
+        FirstName string
+        LastName  string
+        Age       float32
+    }
+
+    type Class []Student
+
+Composition through the use of embedded fields
+
+    type ByFirstName struct {
+        Class
+    }
+
+Type ByFisrtName with the embedded field Class is now associated with the embedded fields's methods, with Class methods.
+
+### Sorting
+
+The Class type does not fully satisfy the sort.Interface interface. It gets only two methods, Len and Swap.
+
+Three struct types with embedded Class field correspond to the Student fields we want to sort by:
+
+    type ByFirstName struct {
+        Class
+    }
+
+    type ByLastName struct {
+        Class
+    }
+
+    type ByAge struct {
+        Class
+    }
+
+Given the embedding/composition rules, these three types have methods Len and Swap. Implementing their individual Less methods turns them into interface types of static type sort.Interface.
+
+class := []Student{	{
+		FirstName: "Lucien",
+		LastName:  "Kaufler",
+		Age:       15,
+	},
+	{
+		FirstName: "Amy",
+		LastName:  "Brunel",
+		Age:       16.5,
+	},
+    ...
+}
+sort.Sort(ByFirstName{c})
+sort.Sort(ByLastName{c})
+sort.Sort(ByAge{c})
+
 ## Map Sort
 
 Sorting of a map by its values uses the same approach as the Simple Sort above. A new type NameAge with an underlying type of a list is introduced, which satisfies the sort.Interface interface. The map is then used to create a NameAge variable.

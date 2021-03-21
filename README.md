@@ -30,7 +30,7 @@ A custom type ByAge is introduced for the list of structs:
 
     type ByAge []Student
 
-This type needs to satisfy the sort.Interface. After implementing the three required methods, the sorting is done through:
+This type needs to satisfy the _sort.Interface_. After implementing the three required methods, the sorting is done through:
 
     sort.Sort(ByAge(c))
 
@@ -127,14 +127,14 @@ It is possible to introduce one sorting type per each subject:
 
 ### Approach 2
 
-Another approach is to introduce one generic function type and a sorter struct and implement the sorter.Sort method rather than implementing ByMaths, ByPhysics etc as a sort.Interface type.
+Another approach is to introduce one generic function type and a sorter struct and implement the sorter.Sort method rather than implementing ByMaths, ByPhysics etc as a _sort.Interface_ type.
 The function type is of signature:
 
     type By func(ch1, ch2 Student) bool
 
 - By function implements Sort method.
 
-- sorter struct, in our case classSorter, encapsulates the list to be sorted and the particular sorting function of type By. The sorter struct implements the sort.Interface methods. See how the classSorter.Less method uses the classSorter.by function.
+- sorter struct, in our case classSorter, encapsulates the list to be sorted and the particular sorting function of type By. The sorter struct implements the _sort.Interface_ methods. See how the classSorter.Less method uses the classSorter.by function.
 
 To sort by Maths grades, we create maths function of the By function signature. To be able to take advantage of the implemented sorter.Sort method, we do type conversion and run the Sort method:
 
@@ -178,7 +178,7 @@ The sorter struct
         less  []lessFunc
     }
 
-satisfies the sort.Interface interface. The Less method is a bit more complicated than before. It loops through sorter.less list. The reason why the lessFunc (ie the sorter.less functions) returns-1/0/+1 is to simplify and eliminate additional looping.
+satisfies the _sort.Interface_ interface. The Less method is a bit more complicated than before. It loops through sorter.less list. The reason why the lessFunc (ie the sorter.less functions) returns-1/0/+1 is to simplify and eliminate additional looping.
 
 OrderedBy function sets up the sorter.less field and the sorter.Sort method sets up the sorter.class field and runs _sort.Sort(sorter_instance)_.
 

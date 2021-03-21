@@ -182,3 +182,6 @@ The sorter struct
 satisfies the sort.Interface interface. The Less method is a bit more complicated than before. It loops through sorter.less list. The reason why the lessFunc (ie the sorter.less functions) returns-1/0/+1 is to simplify and eliminate additional looping.
 
 OrderedBy function sets up the sorter.less field and the sorter.Sort method sets up the sorter.class field and runs _sort.Sort(sorter_instance)_.
+
+    // c ... []Student{....}
+    OrderedBy(maths, physics, english, chemistry).Sort(c)

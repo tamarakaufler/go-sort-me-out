@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/tamarakaufler/go-sort-me-out/internal/map_sort"
 	"github.com/tamarakaufler/go-sort-me-out/internal/multi_sort"
 	"github.com/tamarakaufler/go-sort-me-out/internal/multiple_key_sort"
 	"github.com/tamarakaufler/go-sort-me-out/internal/simple_sort"
@@ -16,4 +17,6 @@ func main() {
 	multiple_key_sort.SortClassByChemistryResults(nil)
 
 	multi_sort.SortByAllSubjects(nil)
+
+	map_sort.SortClassMap(nil)
 }

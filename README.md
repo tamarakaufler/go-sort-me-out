@@ -1,6 +1,8 @@
 # go-sort-me-out
 Go examples of different sorting strategies
 
+The examples revolve around a class of students. If that bothers you, please, leave, so as not to suffer a psychological damage.
+
 # Sorting of concrete types - structs
 
 The necessity to sort a list of structs by a particular struct field requires custom implementation of the sorting mechanism. Go provides sort.Sort method accepting a parameter of _sort.Interface_ type, therefore the concrete type to be sorted must be turned into the interface type.
@@ -94,3 +96,31 @@ as opposed to
 
     sort.Sort(ByMaths(c))
     sort.Sort(ByEnglish(c)) ...
+
+## Multi sort
+
+This is continued sorting by provided criteria when sorting by one field encounters field equivalence.
+
+The implementation somewhat resembles the Multiple Key Sort approach.
+
+A new sorting function type is introduced
+
+    type lessFunc func(ch1, ch2 Student) int
+
+While similar to the one in Multiple Key Sort section, the return value here is an integer rather than a boolean. The return value can be:
+- -1 when a[i] is smaller than a[j]
+-  0 if the are equal
+- +1 when a[i] is bigger than a[j]
+
+Again, there is a sorter struct (classSorter) keeping the list to be sorted and this time, rather than one sorting function, there is a list of sorting functions.
+
+The sorter struct
+
+    type sorter struct {
+        class []Student
+        less  []lessFunc
+    }
+
+satisfies the sort.Interface interface. The Less method is a bit more complicated than before. It loops through sorter.less list. The reason why the lessFunc (ie the sorter.less functions) returns-1/0/+1 is to simplify and eliminate additional looping.
+
+OrderedBy function sets up the sorter.less field and the sorter.Sort method sets up the sorter.class field and runs sort.Sort(sorter_instance)

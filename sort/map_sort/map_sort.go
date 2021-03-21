@@ -6,24 +6,24 @@ import (
 	"sort"
 )
 
-type nameAge []student
+type NameAge []Student
 
-var _ sort.Interface = (nameAge)(nil)
+var _ sort.Interface = (NameAge)(nil)
 
-type student struct {
+type Student struct {
 	name string
 	age  float32
 }
 
-func (na nameAge) Len() int {
+func (na NameAge) Len() int {
 	return len(na)
 }
 
-func (na nameAge) Swap(i, j int) {
+func (na NameAge) Swap(i, j int) {
 	na[i], na[j] = na[j], na[i]
 }
 
-func (na nameAge) Less(i, j int) bool {
+func (na NameAge) Less(i, j int) bool {
 	return na[i].age < na[j].age
 }
 
@@ -40,9 +40,9 @@ func SortClassMap(c map[string]float32) {
 		c = class
 	}
 
-	cs := nameAge{}
+	cs := NameAge{}
 	for k, v := range c {
-		cs = append(cs, student{name: k, age: v})
+		cs = append(cs, Student{name: k, age: v})
 	}
 
 	sort.Sort(cs)

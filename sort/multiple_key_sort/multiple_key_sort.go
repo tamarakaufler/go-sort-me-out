@@ -13,6 +13,41 @@ type Student struct {
 	Chemistry int
 }
 
+// used for sorting by different properties.
+type By func(ch1, ch2 Student) bool
+
+// classSorter encapsulates the slice to sort and the implementation
+// of the Less method for a particular field
+type classSorter struct {
+	class []Student
+	by    func(ch1, ch2 Student) bool
+}
+
+// implementation of the sort.Interface
+func (cs *classSorter) Len() int {
+	return len(cs.class)
+}
+
+func (cs *classSorter) Swap(i, j int) {
+	cs.class[i], cs.class[j] = cs.class[j], cs.class[i]
+}
+
+func (cs *classSorter) Less(i, j int) bool {
+	return cs.by(cs.class[i], cs.class[j])
+}
+
+// the by receiver is the sorting method for a particular Student property/field.
+func (by By) Sort(c []Student) {
+	cs := &classSorter{
+		class: c,
+		by:    by,
+	}
+
+	// classSorter implements sort.Interface interface, so can be used as input
+	// to the Sort method.
+	sort.Sort(cs)
+}
+
 var class = []Student{
 	{
 		Name:      "Lucien",
@@ -56,41 +91,6 @@ var class = []Student{
 		English:   19,
 		Chemistry: 26,
 	},
-}
-
-// used for sorting by different properties.
-type By func(ch1, ch2 Student) bool
-
-// classSorter encapsulates the slice to sort and the implementation
-// of the Less method for a particular field
-type classSorter struct {
-	class []Student
-	by    func(ch1, ch2 Student) bool
-}
-
-// implementation of the sort.Interface
-func (cs *classSorter) Len() int {
-	return len(cs.class)
-}
-
-func (cs *classSorter) Swap(i, j int) {
-	cs.class[i], cs.class[j] = cs.class[j], cs.class[i]
-}
-
-func (cs *classSorter) Less(i, j int) bool {
-	return cs.by(cs.class[i], cs.class[j])
-}
-
-// the by receiver is the sorting method for a particular Student property/field.
-func (by By) Sort(c []Student) {
-	cs := &classSorter{
-		class: c,
-		by:    by,
-	}
-
-	// classSorter implements sort.Interface interface, so can be used as input
-	// to the Sort method.
-	sort.Sort(cs)
 }
 
 // custom Less functions to sort by each property

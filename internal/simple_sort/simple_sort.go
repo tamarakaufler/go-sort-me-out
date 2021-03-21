@@ -57,7 +57,7 @@ func SortClassByAge(c []Child) {
 
 	log.Printf("simple sort - SortClassByAge: before sorting %+v\n", c)
 
-	// we have a class c, which has the same underlying type as ByAge.
+	// we have c, which has the same underlying type as ByAge.
 	// ByAge satisfies the sort.Interface interface (Less/Swap/Less methods) and
 	// can be therefore provided to the Sort method.
 	// The c variable can be cast into ByAge, therefore sorted by age.
@@ -73,7 +73,7 @@ func SliceSortClassByAge(c []Child) {
 
 	log.Printf("simple sort - SliceSortClassByAge: before sorting %+v\n", c)
 
-	// we can use sort.Slice, that accepts two parameters:
+	// we can also use sort.Slice, that accepts two parameters:
 	//		a slice to be sorted
 	//		a closure with the signature of the Less method of the sort.Interface
 	sort.Slice(c, func(i, j int) bool {

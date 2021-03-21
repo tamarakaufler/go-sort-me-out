@@ -1,7 +1,7 @@
 # go-sort-me-out
 Go examples of different sorting strategies
 
-The examples revolve around a class of students. If that bothers you, please, avoid, so as not to suffer psychological damage.
+The examples revolve around a class of students. If that bothers you, please, avoid, not to suffer psychological damage.
 
 # Sorting of concrete types - structs
 
@@ -17,7 +17,7 @@ Example implementations of different approaches are provided in the internal dir
 
 ## Simple Sort
 
-Uses either sort.Sort or sort.Slice methods.
+Uses either _sort.Sort_ or _sort.Slice_ methods.
 
 ### sort.Sort
 
@@ -34,7 +34,7 @@ This type needs to satisfy the sort.Interface. After implementing the three requ
 
     sort.Sort(ByAge(c))
 
-where c is the underlying type of ByAge, ie []Student. The sort.Sort methods needs an input parameter of sort.Interface type, so we need to do type conversion of []Student into ByAge:
+where c is the underlying type of ByAge, ie []Student. The sort.Sort methods needs an input parameter of _sort.Interface_ type, so we need to do type conversion of []Student into ByAge:
 
     ByAge(c)
 
@@ -73,7 +73,7 @@ Composition through the use of embedded fields
         Class
     }
 
-Type ByFisrtName with the embedded field Class is now associated with the embedded fields's methods, with Class methods.
+Type ByFirstName with the embedded field Class is now associated with the embedded fields's methods, with Class methods.
 
 ### Sorting
 
@@ -93,7 +93,7 @@ Three struct types with embedded Class field correspond to the Student fields we
         Class
     }
 
-Given the embedding/composition rules, these three types have methods Len and Swap. Implementing their individual Less methods turns them into interface types of static type sort.Interface.
+Given the embedding/composition rules, these three types have methods Len and Swap. Implementing their individual Less methods turns them into interface types of static type sort.Interface, which allows allows them to be fed into the _sort.Sort_ function..
 
 class := []Student{	{
 		FirstName: "Lucien",
@@ -125,6 +125,7 @@ It is possible to introduce one sorting type per each subject:
 
     type ByMaths   []Student
     type ByPhysics []Student
+
 ### Approach 2
 
 Another approach is to introduce one generic function type and a sorter struct and implement the sorter.Sort method rather than implementing ByMaths, ByPhysics etc as a sort.Interface type.

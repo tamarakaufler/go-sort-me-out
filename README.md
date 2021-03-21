@@ -5,7 +5,7 @@ The examples revolve around a class of students. If that bothers you, please, av
 
 # Sorting of concrete types - structs
 
-The necessity to sort a list of structs by a particular struct field requires custom implementation of the sorting mechanism. Go provides sort.Sort method accepting a parameter of _sort.Interface_ type, therefore the concrete type to be sorted must be turned into the interface type.
+The necessity to sort a list of structs by a particular struct field requires custom implementation of the sorting mechanism. Go provides _sort.Sort_ method accepting a parameter of _sort.Interface_ type, therefore the concrete type to be sorted must be turned into the interface type.
 
 Interface variables of _sort.Interface_ type must implement 3 methods:
 - Len() int
@@ -34,7 +34,7 @@ This type needs to satisfy the sort.Interface. After implementing the three requ
 
     sort.Sort(ByAge(c))
 
-where c is the underlying type of ByAge, ie []Student. The sort.Sort methods needs an input parameter of _sort.Interface_ type, so we need to do type conversion of []Student into ByAge:
+where c is the underlying type of ByAge, ie []Student. The _sort.Sort_ methods needs an input parameter of _sort.Interface_ type, so we need to do type conversion of []Student into ByAge:
 
     ByAge(c)
 
@@ -76,7 +76,7 @@ Type ByFirstName with the embedded field Class is now associated with the embedd
 
 ### Sorting
 
-The Class type does not fully satisfy the sort.Interface interface. It gets only two methods, Len and Swap.
+The Class type does not fully satisfy the _sort.Interface_ interface. It gets only two methods, Len and Swap.
 
 Three struct types with embedded Class field correspond to the Student fields we want to sort by:
 
@@ -92,7 +92,7 @@ Three struct types with embedded Class field correspond to the Student fields we
         Class
     }
 
-Given the embedding/composition rules, these three types have methods Len and Swap. Implementing their individual Less methods turns them into interface types of static type sort.Interface, which allows allows them to be fed into the _sort.Sort_ function..
+Given the embedding/composition rules, these three types have methods Len and Swap. Implementing their individual Less methods turns them into interface types of static type _sort.Interface_, which allows allows them to be fed into the _sort.Sort_ function..
 
 class := []Student{	{
 		FirstName: "Lucien",
@@ -112,7 +112,7 @@ sort.Sort(ByAge{c})
 
 ## Map Sort
 
-Sorting of a map by its values uses the same approach as the Simple Sort above. A new type NameAge with an underlying type of a list is introduced, which satisfies the sort.Interface interface. The map is then used to create a NameAge variable.
+Sorting of a map by its values uses the same approach as the Simple Sort above. A new type NameAge with an underlying type of a list is introduced, which satisfies the _sort.Interface_ interface. The map is then used to create a NameAge variable.
 
 ## Multiple Key Sort
 

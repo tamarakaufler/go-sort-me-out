@@ -56,8 +56,7 @@ a) sorting by name
 
 ## Embed Sort
 
-Another approach to allow sorting by different struct fields is to take advantage type embedding. These fields have the field name specified implicitly.
-(Embedded/anonymous field is specified as a type name or a pointer to a non-interface type name.)
+Another approach to allow sorting by different struct fields is to take advantage type embedding. These fields have the field name specified implicitly. (Embedded/anonymous field must not be an interface type.)
 
     type Student struct {
         FirstName string

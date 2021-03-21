@@ -60,14 +60,13 @@ Sorting of a map by its values uses the same approach as the Simple Sort above. 
 
 We have a struct that contains several fields that would want to individually sort by. As an example, there is a Student with Name and test points in several subjects. We want to be able to sort a class of students by their performace in different subjects.
 
-a) Approach 1
+### Approach 1
 
 It is possible to introduce one sorting type per each subject:
 
     type ByMaths   []Student
     type ByPhysics []Student
-
-a) Approach 2
+### Approach 2
 
 Another approach is to introduce one generic function type and a sorter struct and implement the sorter.Sort method rather than implementing ByMaths, ByPhysics etc as a sort.Interface type.
 The function type is of signature:

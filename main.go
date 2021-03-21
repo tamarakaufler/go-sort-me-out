@@ -1,11 +1,11 @@
 package main
 
 import (
-	"github.com/tamarakaufler/go-sort-me-out/internal/embed_sort"
-	"github.com/tamarakaufler/go-sort-me-out/internal/map_sort"
-	"github.com/tamarakaufler/go-sort-me-out/internal/multi_sort"
-	"github.com/tamarakaufler/go-sort-me-out/internal/multiple_key_sort"
-	"github.com/tamarakaufler/go-sort-me-out/internal/simple_sort"
+	"github.com/tamarakaufler/go-sort-me-out/sort/embed_sort"
+	"github.com/tamarakaufler/go-sort-me-out/sort/map_sort"
+	"github.com/tamarakaufler/go-sort-me-out/sort/multi_sort"
+	"github.com/tamarakaufler/go-sort-me-out/sort/multiple_key_sort"
+	"github.com/tamarakaufler/go-sort-me-out/sort/simple_sort"
 )
 
 func main() {

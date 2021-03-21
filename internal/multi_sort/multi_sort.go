@@ -25,16 +25,8 @@ type sorter struct {
 	less  []lessFunc
 }
 
-func OrderedBy(ls ...lessFunc) *sorter {
-	return &sorter{
-		less: ls,
-	}
-}
-
-func (s *sorter) Sort(c []Child) {
-	s.class = c
-	sort.Sort(s)
-}
+// sorter has the static type sort.Interface.
+var _ sort.Interface = &sorter{}
 
 func (s *sorter) Len() int {
 	return len(s.class)
@@ -60,6 +52,18 @@ func (s *sorter) Less(i, j int) bool {
 		}
 	}
 	return false
+}
+
+// OrderedBy sets up the sorter.less property as a list of sorting functions.
+func OrderedBy(ls ...lessFunc) *sorter {
+	return &sorter{
+		less: ls,
+	}
+}
+
+func (s *sorter) Sort(c []Child) {
+	s.class = c
+	sort.Sort(s)
 }
 
 var maths = func(ch1, ch2 Child) int {
@@ -119,7 +123,7 @@ var class = []Child{
 	},
 	{
 		Name:      "Marianne",
-		Maths:     3,
+		Maths:     12,
 		Physics:   13,
 		English:   16,
 		Chemistry: 19,
@@ -127,15 +131,15 @@ var class = []Child{
 	{
 		Name:      "Mirko",
 		Maths:     12,
-		Physics:   12,
+		Physics:   13,
 		English:   16,
-		Chemistry: 28,
+		Chemistry: 24,
 	},
 	{
 		Name:      "Marek",
 		Maths:     12,
-		Physics:   10,
-		English:   19,
+		Physics:   13,
+		English:   16,
 		Chemistry: 25,
 	},
 	{

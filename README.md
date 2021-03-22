@@ -54,7 +54,7 @@ a) sorting by name
 		return c[i].Name < c[j].Name
     }
 
-## Embed Sort
+## Sort using Composition
 
 Another approach to allow sorting by different struct fields is to take advantage type embedding. These fields have the field name specified implicitly. (Embedded/anonymous field must not be an interface type.)
 

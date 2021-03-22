@@ -72,11 +72,11 @@ Composition through the use of embedded fields
         Class
     }
 
-Type ByFirstName with the embedded field Class is now associated with the embedded fields's methods, with Class methods.
+Type ByFirstName with the embedded field Class is now associated with the embedded fields's methods,ie with Class methods.
 
 ### Sorting
 
-The Class type does not fully satisfy the _sort.Interface_ interface. It gets only two methods, Len and Swap.
+The Class type has two of the _sort.Interface_ methods, Len and Swap, implemented. Through composition, the ByFirstName type satisfies therefore two of the three methods of _sort.Interface_, Len and Swap. 
 
 Three struct types with embedded Class field correspond to the Student fields we want to sort by:
 
@@ -92,7 +92,7 @@ Three struct types with embedded Class field correspond to the Student fields we
         Class
     }
 
-Given the embedding/composition rules, these three types have methods Len and Swap. Implementing their individual Less methods turns them into interface types of static type _sort.Interface_, which allows allows them to be fed into the _sort.Sort_ function..
+Given the embedding/composition rules, these three types have methods Len and Swap. Implementation of their individual Less methods turns them into interface types of static type _sort.Interface_, which allows allows them to be fed into the _sort.Sort_ function..
 
 class := []Student{	{
 		FirstName: "Lucien",

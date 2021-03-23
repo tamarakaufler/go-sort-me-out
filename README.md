@@ -12,7 +12,11 @@ Interface variables of _sort.Interface_ type must implement 3 methods:
 - Swap(i,j int)
 - Less(i,j int) bool
 
-Example implementations of different approaches are provided in the _sort_ directory.
+Example implementations of different approaches are provided in the _sort_ directory. Running main.go
+
+    go run main.go
+
+runs all the examples.
 
 
 ## Simple Sort

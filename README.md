@@ -56,7 +56,7 @@ a) sorting by name
 
 ## Sort using Composition
 
-Another approach to allow sorting by different struct fields is to take advantage type embedding. These fields have the field name specified implicitly. (Embedded/anonymous field must not be an interface type.)
+Another approach to allow sorting by different struct fields is to take advantage type embedding. These fields have the field name specified implicitly. Embedded/anonymous field must not be an interface type.
 
     type Student struct {
         FirstName string
@@ -72,7 +72,7 @@ Composition through the use of embedded fields
         Class
     }
 
-Type ByFirstName with the embedded field Class is now associated with the embedded fields's methods,ie with Class methods.
+Class methods are now promoted to be also methods of the ByFirstName type.
 
 ### Sorting
 

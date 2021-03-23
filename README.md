@@ -92,7 +92,7 @@ Three struct types with embedded Class field correspond to the Student fields we
         Class
     }
 
-Given the embedding/composition rules, these three types have methods Len and Swap. Implementation of their individual Less methods turns them into interface types of static type _sort.Interface_, which allows allows them to be fed into the _sort.Sort_ function..
+Given the embedding/composition rules, these three types have methods Len and Swap. Implementation of their individual Less methods turns them into the interface type of static type _sort.Interface_, which allows allows them to be fed into the _sort.Sort_ function..
 
 class := []Student{	{
 		FirstName: "Lucien",

@@ -16,7 +16,7 @@ Sorting of a list of elements of concrete, ie non built-in types
     - Swap(i,j int)
     - Less(i,j int) bool
 - _sort.Sort_ method accepts a parameter of the type _sort.Interface_
-- _sort.Slice_ method accepts a list and a closuer of Less signature
+- _sort.Slice_ method accepts a list and a closure of Less signature
 
 Depending of the kind of a problem, ie the struct description and the sorting requirements, various approaches are available.
 

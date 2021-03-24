@@ -22,7 +22,7 @@ Depending of the kind of a problem, ie the struct description and the sorting re
 
 # Sorting of a list of structs
 
-The necessity to sort a list of structs by a particular struct field requires custom implementation of the sorting mechanism. Go provides _sort.Sort_ method accepting a parameter of _sort.Interface_ type, therefore the concrete type to be sorted must be turned into the interface type.
+The necessity to sort a list of structs by a particular struct field requires custom implementation of the sorting mechanism. Go provides _sort.Sort_ method accepting a parameter of _sort.Interface_ type, therefore the list of the concrete types to be sorted must be turned into the interface type.
 
 Interface variables of _sort.Interface_ type must implement 3 methods:
 - Len() int

@@ -3,7 +3,24 @@ Go examples of different sorting strategies
 
 The examples revolve around a class of students. If that bothers you, please, avoid, not to suffer psychological damage.
 
-# Sorting of concrete types - structs
+# Preliminaries
+
+## Purpose
+
+Sorting of a list of elements of concrete, ie non built-in types
+
+## At our disposal
+
+- _sort.Interface_ interface:
+    - Len() int
+    - Swap(i,j int)
+    - Less(i,j int) bool
+- _sort.Sort_ method accepts a parameter of the type _sort.Interface_
+- _sort.Slice_
+
+Depending of the kind of a problem, ie the struct description and the sorting requirements, various approaches are available.
+
+# Sorting of a list of structs
 
 The necessity to sort a list of structs by a particular struct field requires custom implementation of the sorting mechanism. Go provides _sort.Sort_ method accepting a parameter of _sort.Interface_ type, therefore the concrete type to be sorted must be turned into the interface type.
 

@@ -204,4 +204,8 @@ OrderedBy function sets up the sorter.less field and the sorter.Sort method sets
 
 # Sorting of maps by value
 
-Sorting of a map by its values uses the same approach as the Simple Sort above. A new type NameAge with an underlying type of a list is introduced, which satisfies the _sort.Interface_ interface. The map is then used to create a NameAge variable.
+Sorting of a map by its values uses one of the approaches above, depending on the map value description and the task requirements.
+
+Example: Using Simple Sort
+
+A new type NameAge with an underlying type of a list is introduced, which satisfies the _sort.Interface_ interface. The map is then used to create a NameAge variable.
